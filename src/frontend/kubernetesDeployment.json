@@ -1,0 +1,22 @@
+{
+  "apiVersion": "apps/v1",
+  "kind": "Deployment",
+  "metadata": { "name": "shieldlink-frontend" },
+  "spec": {
+    "replicas": 3,
+    "selector": { "matchLabels": { "app": "shieldlink-frontend" } },
+    "template": {
+      "metadata": { "labels": { "app": "shieldlink-frontend" } },
+      "spec": {
+        "terminationGracePeriodSeconds": 30,
+        "containers": [
+          {
+            "name": "shieldlink-frontend",
+            "image": "registry.digitalocean.com/neutrino/shieldlink-frontend",
+            "imagePullPolicy": "Always"
+          }
+        ]
+      }
+    }
+  }
+}
