@@ -5,7 +5,7 @@ import { ModalCard, ModalMask, ModalStyled } from 'styles'
 
 import { Input } from '../Input/Input.controller'
 // prettier-ignore
-import { InsuranceModalBuy, InsuranceModalCard, InsuranceModalInputs, InsuranceModalReward, InsuranceModalRewardEther, InsuranceModalRewardTitle } from './InsuranceModal.style'
+import { InsuranceError, InsuranceModalBuy, InsuranceModalCard, InsuranceModalInputs, InsuranceModalReward, InsuranceModalRewardEther, InsuranceModalRewardTitle } from './InsuranceModal.style'
 
 type InsuranceModalViewProps = {
   showing: boolean
@@ -20,7 +20,7 @@ export const InsuranceModalView = ({ showing, insurance, hideCallback, buyCallba
   const [error, setError] = React.useState<any>()
 
   React.useEffect(() => {
-    setPremium(1)
+    setPremium('0')
     setTarget('')
   }, [showing])
 
@@ -37,8 +37,17 @@ export const InsuranceModalView = ({ showing, insurance, hideCallback, buyCallba
                 <div>
                   <HomeInsuranceHeaderTitle>{insurance?.name}</HomeInsuranceHeaderTitle>
                   <HomeInsuranceHeaderFunded>
-                    Funded with Ξ{insurance?.funds}
-                    <img alt="shipping" src="/icons/green-dot.svg" />
+                    {insurance && insurance?.funds > 0 ? (
+                      <>
+                        Funded with Ξ{insurance?.funds}
+                        <img alt="dot" src="/icons/green-dot.svg" />
+                      </>
+                    ) : (
+                      <>
+                        No more funds
+                        <img alt="dot" src="/icons/red-dot.svg" />
+                      </>
+                    )}
                   </HomeInsuranceHeaderFunded>
                 </div>
               </HomeInsuranceHeader>
@@ -59,7 +68,12 @@ export const InsuranceModalView = ({ showing, insurance, hideCallback, buyCallba
                   name="ether"
                   placeholder="Premium"
                   type="number"
-                  onChange={(e) => setPremium(e.target.value)}
+                  onChange={(e) => {
+                    setPremium(e.target.value)
+                    if (insurance && e.target.value * ((insurance?.reward || 0) / 100) > insurance?.funds)
+                      setError('No enought funds in pool')
+                    else setError(undefined)
+                  }}
                   value={premium}
                   onBlur={() => {}}
                   inputStatus={undefined}
@@ -72,9 +86,13 @@ export const InsuranceModalView = ({ showing, insurance, hideCallback, buyCallba
                   Ξ{((parseFloat(premium) || 0) * ((insurance?.reward || 0) / 100)).toFixed(2)}
                 </InsuranceModalRewardEther>
               </InsuranceModalReward>
-              <InsuranceModalBuy onClick={() => buyCallback(insurance?._id as number, target as string, premium)}>
-                Buy insurance for Ξ{(parseFloat(premium) || 0).toFixed(2)}
-              </InsuranceModalBuy>
+              {error ? (
+                <InsuranceError>{error}</InsuranceError>
+              ) : (
+                <InsuranceModalBuy onClick={() => buyCallback(insurance?._id as number, target as string, premium)}>
+                  Buy insurance for Ξ{(parseFloat(premium) || 0).toFixed(2)}
+                </InsuranceModalBuy>
+              )}
             </InsuranceModalCard>
           </ModalCard>
         </>

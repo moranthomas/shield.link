@@ -39,12 +39,12 @@ export const DrawerView = ({ showing, hideCallback, pathname, user, removeAuthUs
       </DrawerItem>
 
       <DrawerItem isSelected={pathname === '/documentation'}>
-        <Link to="/documentation" onClick={() => hideCallback()}>
+        <a href="https://github.com/AymericBethencourt/shield.link/blob/master/EIP3142.md" target="_blank">
           <svg>
             <use xlinkHref="/icons/sprites.svg#doc" />
           </svg>
           ERC 3142
-        </Link>
+        </a>
       </DrawerItem>
     </DrawerStyled>
   </>

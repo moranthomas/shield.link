@@ -43,3 +43,14 @@ export const InsuranceModalBuy = styled.div`
   width: 210px;
   cursor: pointer;
 `
+
+export const InsuranceError = styled.div`
+  color: red;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  height: 36px;
+  line-height: 36px;
+  margin: 60px auto 0 auto;
+  width: 210px;
+`

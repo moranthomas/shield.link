@@ -14,7 +14,7 @@ export const shieldContracts: ShieldContract[] = [
     _id: 0,
     name: 'Shipping Insurance',
     icon: 'shipping',
-    funds: 4.43,
+    funds: 4.20,
     targetName: 'Tracking Number',
     reward: 1000,
     APY: 6.04,

@@ -19,7 +19,7 @@ export const LiquidityModalView = ({ showing, insurance, hideCallback, buyCallba
   const [error, setError] = React.useState<any>()
 
   React.useEffect(() => {
-    setPremium(1)
+    setPremium('1')
   }, [showing])
 
   return (
@@ -35,8 +35,17 @@ export const LiquidityModalView = ({ showing, insurance, hideCallback, buyCallba
                 <div>
                   <HomeInsuranceHeaderTitle>{insurance?.name}</HomeInsuranceHeaderTitle>
                   <HomeInsuranceHeaderFunded>
-                    Funded with Ξ{insurance?.funds}
-                    <img alt="shipping" src="/icons/green-dot.svg" />
+                    {insurance && insurance?.funds > 0 ? (
+                      <>
+                        Funded with Ξ{insurance?.funds}
+                        <img alt="dot" src="/icons/green-dot.svg" />
+                      </>
+                    ) : (
+                      <>
+                        No more funds
+                        <img alt="dot" src="/icons/red-dot.svg" />
+                      </>
+                    )}
                   </HomeInsuranceHeaderFunded>
                 </div>
               </HomeInsuranceHeader>

@@ -29,9 +29,9 @@ export const HeaderView = ({ user }: HeaderViewProps) => {
           </Link>
         </HeaderLogo>
         <HeaderDoc>
-          <Link to="/documentation">
-            <Button color="transparent" text="Documentation" icon="planet" textColor={textColor} />
-          </Link>
+          <a href="https://github.com/AymericBethencourt/shield.link/blob/master/EIP3142.md" target="_blank">
+            <Button color="transparent" text="EIP 3142" icon="planet" textColor={textColor} />
+          </a>
         </HeaderDoc>
         {/* {user ? loggedInHeader(user) : loggedOutHeader()} */}
       </HeaderMain>

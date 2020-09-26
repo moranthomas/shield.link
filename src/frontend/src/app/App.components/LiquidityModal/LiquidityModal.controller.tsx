@@ -27,7 +27,7 @@ export const LiquidityModal = ({ drizzle, drizzleState }: LiquidityModalProps) =
     console.log(drizzle.contracts)
     if (insuranceId === 0)
       drizzle.contracts.ShieldShipping.methods
-        .provideLiquidty()
+        .provideLiquidity()
         .send({ value: web3.utils.toWei(premium as any, 'ether') })
   }
 
