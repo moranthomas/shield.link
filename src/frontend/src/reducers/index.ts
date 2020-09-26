@@ -18,6 +18,7 @@ import { toaster, ToasterState } from './toaster'
 import { uploader, UploaderState } from './uploader'
 import { users, UsersState } from './users'
 import { voters, VotersState } from './voters'
+import { liquidityModal, LiquidityModalState } from './liquidityModal'
 
 export const reducers = (history: any) =>
   combineReducers({
@@ -37,6 +38,7 @@ export const reducers = (history: any) =>
     stats,
     insurances,
     insuranceModal,
+    liquidityModal,
     sellModal,
     balance
   })
@@ -57,6 +59,7 @@ export interface State {
   stats: StatsState
   insurances: InsurancesState
   insuranceModal: InsuranceModalState
+  liquidityModal: LiquidityModalState
   sellModal: SellModalState
   balance: BalanceState
 }

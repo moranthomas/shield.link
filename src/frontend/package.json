@@ -23,6 +23,7 @@
     "import-shared": "rm -Rf src/shared && cp -R ../api/src/shared src/shared"
   },
   "dependencies": {
+    "@chainlink/contracts": "^0.0.10",
     "@drizzle/react-components": "^1.5.3",
     "@drizzle/react-plugin": "^1.5.3",
     "@drizzle/store": "^1.5.3",
@@ -77,6 +78,7 @@
     "@types/react-router-dom": "^5.1.5",
     "@types/react-transition-group": "^4.4.0",
     "@types/styled-components": "^5.1.0",
+    "@types/web3": "^1.2.2",
     "babel-plugin-styled-components": "^1.10.7",
     "cra-append-sw": "^2.7.0",
     "cypress": "^4.9.0",

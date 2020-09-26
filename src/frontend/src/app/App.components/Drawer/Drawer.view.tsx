@@ -43,7 +43,7 @@ export const DrawerView = ({ showing, hideCallback, pathname, user, removeAuthUs
           <svg>
             <use xlinkHref="/icons/sprites.svg#doc" />
           </svg>
-          Documentation
+          ERC 3142
         </Link>
       </DrawerItem>
     </DrawerStyled>

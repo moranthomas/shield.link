@@ -3,7 +3,7 @@ import {  HIDE_INSURANCE, SHOW_INSURANCE } from 'app/App.components/InsuranceMod
 
 export interface InsuranceModalState {
   showing: boolean
-  insuranceId?: string
+  insuranceId?: number
 }
 
 const insuranceModalDefaultState: InsuranceModalState = {

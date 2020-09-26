@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { ModalCard, ModalMask, ModalStyled } from 'styles'
+import { AddModalCard } from './AddModal.style'
 
 type AddModalViewProps = {
   showing: boolean
@@ -12,7 +13,9 @@ export const AddModalView = ({ showing, hideCallback }: AddModalViewProps) => {
       {showing && (
         <>
           <ModalMask showing={showing} onClick={() => hideCallback()} />
-          <ModalCard>yolo</ModalCard>
+          <ModalCard>
+            <AddModalCard>Comming soon...</AddModalCard>
+          </ModalCard>
         </>
       )}
     </ModalStyled>

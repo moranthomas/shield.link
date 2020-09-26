@@ -4,34 +4,34 @@ import { useDispatch, useSelector } from 'react-redux'
 import { State } from 'reducers'
 import web3 from 'web3'
 
-import { hideInsurance } from './InsuranceModal.actions'
-import { InsuranceModalView } from './InsuranceModal.view'
+import { hideLiquidity } from './LiquidityModal.actions'
+import { LiquidityModalView } from './LiquidityModal.view'
 
-type InsuranceModalProps = {
+type LiquidityModalProps = {
   drizzle: any
   drizzleState: any
 }
 
-export const InsuranceModal = ({ drizzle, drizzleState }: InsuranceModalProps) => {
+export const LiquidityModal = ({ drizzle, drizzleState }: LiquidityModalProps) => {
   const dispatch = useDispatch()
-  const { insuranceId, showing } = useSelector((state: State) => state.insuranceModal)
+  const { insuranceId, showing } = useSelector((state: State) => state.liquidityModal)
 
   const hideCallback = () => {
-    dispatch(hideInsurance())
+    dispatch(hideLiquidity())
   }
 
   const insurance: ShieldContract = shieldContracts.filter((shieldContract) => shieldContract._id === insuranceId)?.[0]
 
-  const buyCallback = (insuranceId: number, target: string, premium: number) => {
-    console.log(insuranceId, target, premium)
+  const buyCallback = (insuranceId: number, premium: number) => {
+    console.log(insuranceId, premium)
     console.log(drizzle.contracts)
     if (insuranceId === 0)
       drizzle.contracts.ShieldShipping.methods
-        .buyInsurance(target)
+        .provideLiquidty()
         .send({ value: web3.utils.toWei(premium as any, 'ether') })
   }
 
   return (
-    <InsuranceModalView showing={showing} insurance={insurance} hideCallback={hideCallback} buyCallback={buyCallback} />
+    <LiquidityModalView showing={showing} insurance={insurance} hideCallback={hideCallback} buyCallback={buyCallback} />
   )
 }

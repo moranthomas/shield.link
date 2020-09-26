@@ -1,14 +1,14 @@
 import styled from 'styled-components/macro'
 import { backgroundColorLight, subTextColor } from 'styles'
 
-export const InsuranceModalCard = styled.div`
+export const LiquidityModalCard = styled.div`
   background-color: ${backgroundColorLight};
   border-radius: 10px;
   width: 440px;
   padding: 30px;
 `
 
-export const InsuranceModalInputs = styled.div`
+export const LiquidityModalInputs = styled.div`
   margin: 40px auto;
 
   > div {
@@ -16,22 +16,22 @@ export const InsuranceModalInputs = styled.div`
   }
 `
 
-export const InsuranceModalReward = styled.div`
+export const LiquidityModalReward = styled.div`
   display: grid;
   grid-template-columns: auto auto;
   grid-gap: 10px;
 `
 
-export const InsuranceModalRewardTitle = styled.div`
+export const LiquidityModalRewardTitle = styled.div`
   color: ${subTextColor};
 `
 
-export const InsuranceModalRewardEther = styled.div`
+export const LiquidityModalRewardEther = styled.div`
   font-size: 18px;
   text-align: right;
 `
 
-export const InsuranceModalBuy = styled.div`
+export const LiquidityModalBuy = styled.div`
   border: 1px solid white;
   font-size: 16px;
   border-radius: 40px;

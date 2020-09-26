@@ -5,23 +5,21 @@ import { ModalCard, ModalMask, ModalStyled } from 'styles'
 
 import { Input } from '../Input/Input.controller'
 // prettier-ignore
-import { InsuranceModalBuy, InsuranceModalCard, InsuranceModalInputs, InsuranceModalReward, InsuranceModalRewardEther, InsuranceModalRewardTitle } from './InsuranceModal.style'
+import { LiquidityModalBuy, LiquidityModalCard, LiquidityModalInputs, LiquidityModalReward, LiquidityModalRewardEther, LiquidityModalRewardTitle } from './LiquidityModal.style'
 
-type InsuranceModalViewProps = {
+type LiquidityModalViewProps = {
   showing: boolean
   insurance?: ShieldContract
   hideCallback: () => void
-  buyCallback: (insuranceId: number, target: string, premium: number) => void
+  buyCallback: (insuranceId: number, premium: number) => void
 }
 
-export const InsuranceModalView = ({ showing, insurance, hideCallback, buyCallback }: InsuranceModalViewProps) => {
-  const [target, setTarget] = React.useState<any>()
+export const LiquidityModalView = ({ showing, insurance, hideCallback, buyCallback }: LiquidityModalViewProps) => {
   const [premium, setPremium] = React.useState<any>()
   const [error, setError] = React.useState<any>()
 
   React.useEffect(() => {
     setPremium(1)
-    setTarget('')
   }, [showing])
 
   return (
@@ -30,8 +28,8 @@ export const InsuranceModalView = ({ showing, insurance, hideCallback, buyCallba
         <>
           <ModalMask showing={showing} onClick={() => hideCallback()} />
           <ModalCard>
-            <h1>Purchase Insurance</h1>
-            <InsuranceModalCard>
+            <h1>Provide Liquidity</h1>
+            <LiquidityModalCard>
               <HomeInsuranceHeader>
                 <img alt="shipping" src={`/images/${insurance?.icon}.png`} />
                 <div>
@@ -42,18 +40,7 @@ export const InsuranceModalView = ({ showing, insurance, hideCallback, buyCallba
                   </HomeInsuranceHeaderFunded>
                 </div>
               </HomeInsuranceHeader>
-              <InsuranceModalInputs>
-                <Input
-                  icon="target"
-                  name="target"
-                  placeholder={insurance?.targetName}
-                  type="text"
-                  onChange={(e) => setTarget(e.target.value)}
-                  value={target}
-                  onBlur={() => {}}
-                  inputStatus={undefined}
-                  errorMessage={undefined}
-                />
+              <LiquidityModalInputs>
                 <Input
                   icon="ether"
                   name="ether"
@@ -65,17 +52,17 @@ export const InsuranceModalView = ({ showing, insurance, hideCallback, buyCallba
                   inputStatus={undefined}
                   errorMessage={undefined}
                 />
-              </InsuranceModalInputs>
-              <InsuranceModalReward>
-                <InsuranceModalRewardTitle>{insurance?.condition}</InsuranceModalRewardTitle>
-                <InsuranceModalRewardEther>
-                  Ξ{((parseFloat(premium) || 0) * ((insurance?.reward || 0) / 100)).toFixed(2)}
-                </InsuranceModalRewardEther>
-              </InsuranceModalReward>
-              <InsuranceModalBuy onClick={() => buyCallback(insurance?._id as number, target as string, premium)}>
-                Buy insurance for Ξ{(parseFloat(premium) || 0).toFixed(2)}
-              </InsuranceModalBuy>
-            </InsuranceModalCard>
+              </LiquidityModalInputs>
+              <LiquidityModalReward>
+                <LiquidityModalRewardTitle>Estimated anual reward</LiquidityModalRewardTitle>
+                <LiquidityModalRewardEther>
+                  Ξ{((parseFloat(premium) || 0) * ((insurance?.APY || 0) / 100)).toFixed(2)}
+                </LiquidityModalRewardEther>
+              </LiquidityModalReward>
+              <LiquidityModalBuy onClick={() => buyCallback(insurance?._id as number, premium)}>
+                Send Ξ{(parseFloat(premium) || 0).toFixed(2)}
+              </LiquidityModalBuy>
+            </LiquidityModalCard>
           </ModalCard>
         </>
       )}

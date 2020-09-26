@@ -1,16 +1,16 @@
-import { showInsurance } from 'app/App.components/InsuranceModal/InsuranceModal.actions'
 import * as React from 'react'
 import { useDispatch } from 'react-redux'
 import { DrizzleContext } from '@drizzle/react-plugin'
 
-import { HomeView } from './Home.view'
+import { LiquidityView } from './Liquidity.view'
 import { showAddModal } from 'app/App.components/AddModal/AddModal.actions'
+import { showLiquidity } from 'app/App.components/LiquidityModal/LiquidityModal.actions'
 
-export const Home = () => {
+export const Liquidity = () => {
   const dispatch = useDispatch()
 
   const showInsuranceCallback = (insuranceId: number) => {
-    dispatch(showInsurance(insuranceId))
+    dispatch(showLiquidity(insuranceId))
   }
 
   const newInsuranceCallback = () => {
@@ -27,7 +27,7 @@ export const Home = () => {
         }
 
         return (
-          <HomeView
+          <LiquidityView
             showInsuranceCallback={showInsuranceCallback}
             newInsuranceCallback={newInsuranceCallback}
             drizzle={drizzle}

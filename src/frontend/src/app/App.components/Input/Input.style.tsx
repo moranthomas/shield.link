@@ -20,6 +20,7 @@ export const InputComponent = styled.input`
   transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   will-change: border-color, box-shadow;
   background-color: ${backgroundColorDark};
+  -webkit-appearance: none;
 
   &:hover {
     border-color: ${primaryColor}7F;

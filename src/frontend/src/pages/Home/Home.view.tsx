@@ -1,3 +1,4 @@
+import { commatize } from 'helpers/commatize'
 import { shieldContracts } from 'helpers/shieldContracts'
 import * as React from 'react'
 import { useEffect } from 'react'
@@ -6,7 +7,7 @@ import { useEffect } from 'react'
 import { HomeAddInsurance, HomeInsurance, HomeInsuranceBuy, HomeInsuranceHeader, HomeInsuranceHeaderFunded, HomeInsuranceHeaderTitle, HomeInsuranceOfPremium, HomeInsuranceReward, HomeInsurances, HomeStyled } from './Home.style'
 
 type HomeViewProps = {
-  showInsuranceCallback: (insuranceId: string) => void
+  showInsuranceCallback: (insuranceId: number) => void
   newInsuranceCallback: () => void
   drizzle: any
   drizzleState: any
@@ -21,11 +22,11 @@ export const HomeView = ({ showInsuranceCallback, drizzle, newInsuranceCallback 
 
   return (
     <HomeStyled>
-      <h1>Insurance Pools</h1>
+      <h1>Insurance Marketplace</h1>
 
       <HomeInsurances>
         {shieldContracts.map((shieldContract: any) => (
-          <HomeInsurance onClick={() => showInsuranceCallback(shieldContract._id)}>
+          <HomeInsurance key={shieldContract._id} onClick={() => showInsuranceCallback(shieldContract._id)}>
             <HomeInsuranceHeader>
               <img alt={shieldContract.icon} src={`/images/${shieldContract.icon}.png`} />
               <div>
@@ -45,7 +46,7 @@ export const HomeView = ({ showInsuranceCallback, drizzle, newInsuranceCallback 
                 </HomeInsuranceHeaderFunded>
               </div>
             </HomeInsuranceHeader>
-            <HomeInsuranceReward>1,000%</HomeInsuranceReward>
+            <HomeInsuranceReward>{`${commatize(shieldContract.reward)}%`}</HomeInsuranceReward>
             <HomeInsuranceOfPremium>of premium</HomeInsuranceOfPremium>
             <HomeInsuranceBuy>Purchase Insurance</HomeInsuranceBuy>
           </HomeInsurance>
