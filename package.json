@@ -44,5 +44,8 @@
       "eslint --fix",
       "git add"
     ]
+  },
+  "dependencies": {
+    "@chainlink/contracts": "^0.0.10"
   }
 }
