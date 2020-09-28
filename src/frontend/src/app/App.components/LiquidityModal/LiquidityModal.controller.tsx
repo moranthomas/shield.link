@@ -29,6 +29,12 @@ export const LiquidityModal = ({ drizzle, drizzleState }: LiquidityModalProps) =
       drizzle.contracts.ShieldShipping.methods
         .provideLiquidity()
         .send({ value: web3.utils.toWei(premium as any, 'ether') })
+    if (insuranceId === 1)
+      drizzle.contracts.ShieldLife.methods.provideLiquidity().send({ value: web3.utils.toWei(premium as any, 'ether') })
+    if (insuranceId === 2)
+      drizzle.contracts.ShieldFlight.methods
+        .provideLiquidity()
+        .send({ value: web3.utils.toWei(premium as any, 'ether') })
   }
 
   return (

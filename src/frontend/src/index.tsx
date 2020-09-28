@@ -8,7 +8,7 @@ import { SW_INIT, SW_UPDATE } from 'reducers/serviceWorker'
 
 import { App } from './app/App.controller'
 import { configureStore } from './app/App.store'
-import { register } from './serviceWorker'
+import { unregister } from './serviceWorker'
 import { GlobalStyle } from './styles'
 
 import './styles/fonts.css'
@@ -33,17 +33,19 @@ export const Root = () => {
 // const rootElement = document.getElementById('root')
 // ReactDOM.render(<Root />, rootElement)
 
-register({
-  onSuccess: () => {
-    console.info(SW_INIT)
-    store.dispatch({ type: SW_INIT })
-  },
-  onUpdate: (reg) => {
-    console.info(SW_UPDATE)
-    store.dispatch({ type: SW_UPDATE, payload: reg })
-    store.dispatch<any>(reset())
-    setTimeout(function () {
-      window.location.reload()
-    }, 100)
-  },
-})
+unregister()
+
+// register({
+//   onSuccess: () => {
+//     console.info(SW_INIT)
+//     store.dispatch({ type: SW_INIT })
+//   },
+//   onUpdate: (reg) => {
+//     console.info(SW_UPDATE)
+//     store.dispatch({ type: SW_UPDATE, payload: reg })
+//     store.dispatch<any>(reset())
+//     setTimeout(function () {
+//       window.location.reload()
+//     }, 100)
+//   },
+// })

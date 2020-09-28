@@ -9,7 +9,8 @@ import { Route, Switch } from 'react-router'
 
 import Shields from '../contracts/Shields.json'
 import ShieldShipping from '../contracts/ShieldShipping.json'
-
+import ShieldLife from '../contracts/ShieldLife.json'
+import ShieldFlight from '../contracts/ShieldFlight.json'
 import drizzleOptions from '../drizzleOptions'
 import { AddModal } from './App.components/AddModal/AddModal.controller'
 import { Drawer } from './App.components/Drawer/Drawer.controller'
@@ -21,7 +22,7 @@ import { ProgressBar } from './App.components/ProgressBar/ProgressBar.controller
 import { Toaster } from './App.components/Toaster/Toaster.controller'
 import { history } from './App.store'
 
-const options = { contracts: [Shields, ShieldShipping] }
+const options = { contracts: [Shields, ShieldShipping, ShieldLife, ShieldFlight] }
 // @ts-ignore
 const drizzleStore = generateStore(options)
 // @ts-ignore
@@ -35,7 +36,7 @@ export const App = () => {
           const { drizzle, drizzleState, initialized } = drizzleContext
 
           if (!initialized) {
-            return 'Please install and open metamask to access Shield...'
+            return 'Please connect to RINKEBY and refresh!'
           }
 
           return (

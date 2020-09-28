@@ -2,6 +2,8 @@ import Web3 from "web3";
 
 import Shields from "./contracts/Shields.json";
 import ShieldShipping from "./contracts/ShieldShipping.json";
+import ShieldLife from "./contracts/ShieldLife.json";
+import ShieldFlight from "./contracts/ShieldFlight.json";
 
 const options = {
   web3: {
@@ -15,7 +17,7 @@ const options = {
       42 // Kovan
     ]
   },
-  contracts: [Shields, ShieldShipping],
+  contracts: [Shields, ShieldShipping, ShieldLife, ShieldFlight],
 };
 
 export default options;

@@ -29,6 +29,14 @@ export const InsuranceModal = ({ drizzle, drizzleState }: InsuranceModalProps) =
       drizzle.contracts.ShieldShipping.methods
         .buyInsurance(target)
         .send({ value: web3.utils.toWei(premium as any, 'ether') })
+    if (insuranceId === 1)
+      drizzle.contracts.ShieldLife.methods
+        .buyInsurance(target)
+        .send({ value: web3.utils.toWei(premium as any, 'ether') })
+    if (insuranceId === 2)
+      drizzle.contracts.ShieldFlight.methods
+        .buyInsurance(target)
+        .send({ value: web3.utils.toWei(premium as any, 'ether') })
   }
 
   return (
