@@ -11,11 +11,13 @@ module.exports = {
   },
   contracts_build_directory: path.join(__dirname, './src/contracts'),
   networks: {
+    // For Ganache local
     development: {
       host: '127.0.0.1',
       port: 7545,
       network_id: '*',
     },
+    // When we migrate against Rinkeby (by default)
     rinkeby: {
       provider: function () {
         return new HDWalletProvider(MNEMONIC, 'https://rinkeby.infura.io/v3/e4588d11d73d47749c72f5f542832808')
